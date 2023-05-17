@@ -1,0 +1,21 @@
+{
+  "name": "threejs-journey-exercise",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "vite": "^4.0.4"
+  },
+  "dependencies": {
+    "gsap": "^3.11.5",
+    "lil-gui": "^0.17.0",
+    "simple-input-events": "^2.0.0",
+    "three": "^0.148.0",
+    "vite-plugin-glsl": "^1.1.2"
+  }
+}
