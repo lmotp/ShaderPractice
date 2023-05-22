@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  color: #111111;
+  font-family: 'pretendard';
+}
+
+ol {
+  display: flex;
+  gap: 20px;
+}
+
+ol li {
+  font-weight: 700;
+  font-size: 1.5rem;
+  opacity: 0.5;
+
+  transition: opacity 500ms ease-in-out;
+}
+
+ol li:hover {
+  text-decoration: #095e12 wavy underline;
+  text-underline-offset: 6px;
+  opacity: 1;
+}
