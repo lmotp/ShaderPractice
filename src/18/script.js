@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import * as THREE from 'three';
-import * as dat from 'lil-gui';
-
-import fragmentShader from './shaders/fragment.glsl';
-import vertexShader from './shaders/vertex.glsl';
-=======
 import * as THREE from "three";
 import * as dat from "lil-gui";
 
 import fragmentShader from "./shaders/fragment.glsl";
 import vertexShader from "./shaders/vertex.glsl";
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 
 /**
  * Base
@@ -21,17 +13,10 @@ const settings = {
   progress: 0,
 };
 
-<<<<<<< HEAD
-gui.add(settings, 'progress').min(0).max(1).step(0.01);
-
-// Canvas
-const canvas = document.querySelector('canvas.webgl');
-=======
 gui.add(settings, "progress").min(0).max(1).step(0.01);
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 
 // Scene
 const scene = new THREE.Scene();
@@ -52,6 +37,7 @@ const material = new THREE.ShaderMaterial({
   uniforms: {
     uTime: { value: 0 },
     resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    progress: { value: 0 },
   },
   vertexShader,
   fragmentShader,
@@ -68,11 +54,7 @@ const sizes = {
   height: window.innerHeight,
 };
 
-<<<<<<< HEAD
-window.addEventListener('resize', () => {
-=======
 window.addEventListener("resize", () => {
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
   // Update sizes
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
@@ -84,10 +66,6 @@ window.addEventListener("resize", () => {
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-<<<<<<< HEAD
-  renderer.setClearColor(0x000000, 1);
-=======
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 });
 
 /**
@@ -95,7 +73,15 @@ window.addEventListener("resize", () => {
  */
 // Base camera
 
-const camera = new THREE.PerspectiveCamera(70, sizes.width / sizes.height, 0.01, 1000);
+const frustumSize = 1;
+const camera = new THREE.OrthographicCamera(
+  frustumSize / -2,
+  frustumSize / 2,
+  frustumSize / 2,
+  frustumSize / -2,
+  -1000,
+  1000
+);
 camera.position.set(0, 0, 1);
 scene.add(camera);
 
@@ -107,11 +93,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-<<<<<<< HEAD
-renderer.setClearColor(0x000000, 1);
-=======
-renderer.setClearColor(0xffffff, 1);
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
+renderer.setClearColor(0xeeeeee, 1);
 
 /**
  * Animate
@@ -123,6 +105,7 @@ const tick = () => {
   time += 0.05;
 
   material.uniforms.uTime.value = time;
+  material.uniforms.progress.value = settings.progress;
 
   // Render
   renderer.render(scene, camera);

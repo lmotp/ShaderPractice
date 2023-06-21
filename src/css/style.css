@@ -8,7 +8,7 @@ main {
   width: 100%;
   height: 100vh;
   color: #111111;
-  font-family: 'pretendard';
+  font-family: "pretendard";
 }
 
 h1 {
@@ -30,11 +30,17 @@ h1::after {
 
 ol {
   display: flex;
+<<<<<<< HEAD
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px 30px;
   width: 500px;
+=======
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 400px;
+>>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 }
 
 ol li {
@@ -50,4 +56,5 @@ ol li:hover {
   text-decoration: #095e12 wavy underline;
   text-underline-offset: 6px;
   opacity: 1;
+  text-shadow: 0 0 4px rgba(4, 47, 8, 0.25);
 }

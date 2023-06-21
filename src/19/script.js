@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-import * as THREE from 'three';
-import * as dat from 'lil-gui';
-
-import fragmentShader from './shaders/fragment.glsl';
-import vertexShader from './shaders/vertex.glsl';
-=======
 import * as THREE from "three";
 import * as dat from "lil-gui";
 
 import fragmentShader from "./shaders/fragment.glsl";
 import vertexShader from "./shaders/vertex.glsl";
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
+
+import img from "./static/img1.jpg";
 
 /**
  * Base
@@ -21,17 +15,10 @@ const settings = {
   progress: 0,
 };
 
-<<<<<<< HEAD
-gui.add(settings, 'progress').min(0).max(1).step(0.01);
-
-// Canvas
-const canvas = document.querySelector('canvas.webgl');
-=======
 gui.add(settings, "progress").min(0).max(1).step(0.01);
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 
 // Scene
 const scene = new THREE.Scene();
@@ -45,19 +32,32 @@ const textureLoad = new THREE.TextureLoader();
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
 
 // Material
 const material = new THREE.ShaderMaterial({
   uniforms: {
     uTime: { value: 0 },
+    uImage: { value: textureLoad.load(img) },
     resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    progress: { value: 0 },
   },
   vertexShader,
   fragmentShader,
 });
 
+const geometry2 = new THREE.PlaneGeometry(1, 1, 32, 32);
+const material2 = new THREE.MeshBasicMaterial({
+  color: new THREE.Color("blue"),
+});
+
 const mesh = new THREE.Mesh(geometry, material);
+const mesh2 = new THREE.Mesh(geometry2, material2);
+
+mesh2.position.set(0.5, 0, 0);
+mesh2.scale.set(0.25, 0.25, 0.25);
+
+scene.add(mesh2);
 scene.add(mesh);
 
 /**
@@ -68,11 +68,7 @@ const sizes = {
   height: window.innerHeight,
 };
 
-<<<<<<< HEAD
-window.addEventListener('resize', () => {
-=======
 window.addEventListener("resize", () => {
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
   // Update sizes
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
@@ -84,10 +80,6 @@ window.addEventListener("resize", () => {
   // Update renderer
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-<<<<<<< HEAD
-  renderer.setClearColor(0x000000, 1);
-=======
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 });
 
 /**
@@ -95,8 +87,10 @@ window.addEventListener("resize", () => {
  */
 // Base camera
 
-const camera = new THREE.PerspectiveCamera(70, sizes.width / sizes.height, 0.01, 1000);
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
 camera.position.set(0, 0, 1);
+scene.add(camera);
+
 scene.add(camera);
 
 /**
@@ -107,11 +101,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-<<<<<<< HEAD
-renderer.setClearColor(0x000000, 1);
-=======
-renderer.setClearColor(0xffffff, 1);
->>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
+renderer.setClearColor(0xeeeeee, 1);
 
 /**
  * Animate
@@ -123,6 +113,7 @@ const tick = () => {
   time += 0.05;
 
   material.uniforms.uTime.value = time;
+  material.uniforms.progress.value = settings.progress;
 
   // Render
   renderer.render(scene, camera);

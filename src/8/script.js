@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import * as THREE from 'three';
 import * as dat from 'lil-gui';
 
 import fragmentShader from './shaders/fragment.glsl';
 import vertexShader from './shaders/vertex.glsl';
+=======
+import * as THREE from "three";
+import * as dat from "lil-gui";
+
+import fragmentShader from "./shaders/fragment.glsl";
+import vertexShader from "./shaders/vertex.glsl";
+>>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 
 /**
  * Base
@@ -13,10 +21,17 @@ const settings = {
   progress: 0,
 };
 
+<<<<<<< HEAD
 gui.add(settings, 'progress').min(0).max(1).step(0.01);
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl');
+=======
+gui.add(settings, "progress").min(0).max(1).step(0.01);
+
+// Canvas
+const canvas = document.querySelector("canvas.webgl");
+>>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
 
 // Scene
 const scene = new THREE.Scene();
@@ -53,7 +68,11 @@ const sizes = {
   height: window.innerHeight,
 };
 
+<<<<<<< HEAD
 window.addEventListener('resize', () => {
+=======
+window.addEventListener("resize", () => {
+>>>>>>> 416bcaaa0d185f2d60741484a020902004b91bfa
   // Update sizes
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;

@@ -29,10 +29,10 @@ void main(){
   coord = coord * 2. - 1.;
 
   //기준점이 움직임.
-  coord += circleRotate;
+  // coord += circleRotate;
 
   // 물체가 움직임. 
-  // vec2 loc = vec2(0.0) + circleRotate; 
-  vec3 col = vec3(crossBar(vec2(0.), vec2(0.1,0.030),coord));
+  vec2 loc = vec2(0.0) + circleRotate; 
+  vec3 col = vec3(crossBar(vec2(loc), vec2(0.1,0.030),coord));
   gl_FragColor = vec4(col,1.0);
 }
