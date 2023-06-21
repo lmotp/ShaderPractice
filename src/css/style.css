@@ -6,12 +6,14 @@ main {
   height: 100vh;
 
   color: #111111;
-  font-family: 'pretendard';
+  font-family: "pretendard";
 }
 
 ol {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  width: 400px;
 }
 
 ol li {
@@ -26,4 +28,5 @@ ol li:hover {
   text-decoration: #095e12 wavy underline;
   text-underline-offset: 6px;
   opacity: 1;
+  text-shadow: 0 0 4px rgba(4, 47, 8, 0.25);
 }

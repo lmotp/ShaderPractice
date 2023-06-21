@@ -24,16 +24,15 @@ void main(){
   float rad = 0.4;
   vec2 circleRotate = vec2(sin(uTime * 0.2),cos(uTime * 0.2)) * vec2(rad);
 
-  vec2 coord = gl_FragCoord.xy / resolution.xy;
-  coord.x *= resolution.x / resolution.y;
+  vec2 coord = vUv;
   // 기준점을 가운대로 옮기면서, 기준점에서 1.0씩 떨어지게끔 수정.
   coord = coord * 2. - 1.;
 
   //기준점이 움직임.
-  coord += circleRotate;
+  // coord += circleRotate;
 
   // 물체가 움직임. 
-  // vec2 loc = vec2(0.0) + circleRotate; 
-  vec3 col = vec3(crossBar(vec2(0.), vec2(0.1,0.030),coord));
+  vec2 loc = vec2(0.0) + circleRotate; 
+  vec3 col = vec3(crossBar(vec2(loc), vec2(0.1,0.030),coord));
   gl_FragColor = vec4(col,1.0);
 }
