@@ -2,22 +2,46 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 60px;
+  padding-bottom: 100px;
   width: 100%;
   height: 100vh;
-
   color: #111111;
   font-family: 'pretendard';
 }
 
+h1 {
+  position: relative;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 4px;
+  opacity: 0.75;
+  background-image: linear-gradient(90deg, #095e12 50%, #111111 50%);
+}
+
 ol {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 30px;
+  width: 500px;
 }
 
 ol li {
   font-weight: 700;
   font-size: 1.5rem;
   opacity: 0.5;
+  text-shadow: 3px 3px 2px rgba(95, 95, 95, 0.25);
 
   transition: opacity 500ms ease-in-out;
 }

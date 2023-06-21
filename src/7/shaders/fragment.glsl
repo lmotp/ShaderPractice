@@ -24,8 +24,7 @@ void main(){
   float rad = 0.4;
   vec2 circleRotate = vec2(sin(uTime * 0.2),cos(uTime * 0.2)) * vec2(rad);
 
-  vec2 coord = gl_FragCoord.xy / resolution.xy;
-  coord.x *= resolution.x / resolution.y;
+  vec2 coord = vUv;
   // 기준점을 가운대로 옮기면서, 기준점에서 1.0씩 떨어지게끔 수정.
   coord = coord * 2. - 1.;
 
